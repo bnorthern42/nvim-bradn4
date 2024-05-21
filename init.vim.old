@@ -1,0 +1,81 @@
+" neovide config
+
+if exists("g:neovide")
+
+autocmd VimEnter * NERDTree
+set encoding=utf-8
+
+" save this file and run pluginstall etc
+ command Nsave execute 'w|source %|PlugInstall'
+" neovide resize at runtime:
+let g:neovide_scale_factor=1.0
+function! ChangeScaleFactor(delta)
+	let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
+endfunction
+nnoremap <expr><C-=> ChangeScaleFactor(1.25)
+nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
+" performance neovide:
+let g:neovide_refresh_rate = 60
+let g:neovide_refresh_rate_idle = 5
+
+ let g:neovide_transparency = 0.8
+ " let g:transparency = 0.1
+ " let g:neovide_background_color = '#6A0DAD'.printf('%x', float2nr(255 * g:transparency))
+ 
+ "normal copy paste binds etc...
+ "
+ map! <S-insert> <C-R>+
+ map! <C-v> <C-R>+
+
+ call plug#begin()
+	Plug 'vim-scripts/bash-support.vim'	
+        Plug 'valloric/youcompleteme'
+	Plug 'ervandew/supertab'
+	Plug 'joshdick/onedark.vim'
+	Plug 'luochen1990/rainbow'
+	Plug '907th/vim-auto-save'
+	Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'junegunn/vim-github-dashboard'
+	Plug 'vim-airline/vim-airline'
+	Plug 'ctrlpvim/ctrlp.vim'
+	" NodeJS and web plugs
+	Plug 'neoclide/coc.nvim'
+	Plug 'mlaursen/vim-react-snippets' "fce for react snipped functionthat I like to use	
+	" color dat css hex and others
+	Plug 'skammer/vim-css-color'
+	Plug 'vim-scripts/HTML-AutoCloseTag'
+	"minimap / scroll bar
+	Plug 'mustache/vim-mustache-handlebars'
+"causes error"	Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+	Plug 'majutsushi/tagbar'
+	Plug 'ryanoasis/vim-devicons'
+ call plug#end()
+
+ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+ let g:auto_save = 1  " enable AutoSave on Vim startup
+ syntax on
+ colorscheme onedark
+ let g:airline_theme='onedark'
+ nmap <F8> :TagbarToggle<CR>
+
+let g:coc_global_extensions = [
+	  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json',
+  \ 'coc-css',
+  \ 'coc-java',
+  \ 'coc-sh',
+  \ ]
+
+"let g:minimap_width = 10
+"let g:minimap_auto_start = 1
+"let g:minimap_auto_start_win_enter = 1
+
+
+
+endif
+
