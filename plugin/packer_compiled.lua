@@ -96,6 +96,7 @@ _G.packer_plugins = {
   },
   ["compiler.nvim"] = {
     commands = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rcompiler\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -193,11 +194,8 @@ _G.packer_plugins = {
     url = "https://github.com/navarasu/onedark.nvim"
   },
   ["overseer.nvim"] = {
-    commands = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/bradn4/.local/share/nvim/site/pack/packer/opt/overseer.nvim",
+    loaded = true,
+    path = "/home/bradn4/.local/share/nvim/site/pack/packer/start/overseer.nvim",
     url = "https://github.com/stevearc/overseer.nvim"
   },
   ["packer.nvim"] = {
@@ -232,24 +230,24 @@ time([[Defining packer_plugins]], false)
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.api.nvim_create_user_command, 'CompilerOpen', function(cmdargs)
-          require('packer.load')({'compiler.nvim', 'overseer.nvim'}, { cmd = 'CompilerOpen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+          require('packer.load')({'compiler.nvim'}, { cmd = 'CompilerOpen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'compiler.nvim', 'overseer.nvim'}, {}, _G.packer_plugins)
+          require('packer.load')({'compiler.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('CompilerOpen ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'CompilerToggleResults', function(cmdargs)
-          require('packer.load')({'compiler.nvim', 'overseer.nvim'}, { cmd = 'CompilerToggleResults', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+          require('packer.load')({'compiler.nvim'}, { cmd = 'CompilerToggleResults', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'compiler.nvim', 'overseer.nvim'}, {}, _G.packer_plugins)
+          require('packer.load')({'compiler.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('CompilerToggleResults ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'CompilerRedo', function(cmdargs)
-          require('packer.load')({'compiler.nvim', 'overseer.nvim'}, { cmd = 'CompilerRedo', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+          require('packer.load')({'compiler.nvim'}, { cmd = 'CompilerRedo', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'compiler.nvim', 'overseer.nvim'}, {}, _G.packer_plugins)
+          require('packer.load')({'compiler.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('CompilerRedo ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)

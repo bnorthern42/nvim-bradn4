@@ -1,4 +1,4 @@
-require('compiler').setup()
+--require('compiler').setup()
 
 vim.api.nvim_set_keymap('n', '<F6>', "<cmd>CompilerOpen<CR>", { noremap = true, silent = true })
 

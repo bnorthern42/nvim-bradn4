@@ -55,31 +55,36 @@ use {clangd = function()
 }
 use('nvim-tree/nvim-web-devicons') -- optional
 --use('ycm-core/YouCompleteMe')
-use({'Zeioth/compiler.nvim',
+use{
+  'Zeioth/compiler.nvim',
   cmd = {"CompilerOpen", "CompilerToggleResults", "CompilerRedo"},
-  dependencies = { "stevearc/overseer.nvim" },
-  opts = {},
-  })
-use({ -- The task runner we use
+  requires = { "stevearc/overseer.nvim" },
+  config = function ()
+    require('compiler').setup()
+  end
+  }
+use{ -- The task runner we use
   "stevearc/overseer.nvim",
-  commit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0",
-  cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-  opts = {
-    task_list = {
-      direction = "bottom",
-      min_height = 25,
-      max_height = 25,
-      default_detail = 1
-    },
-  },
-})
+  --commit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0",
+  --cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+  --opts = {
+    --task_list = {
+    --  direction = "bottom",
+    --  min_height = 25,
+    --  max_height = 25,
+    --  default_detail = 1
+    --},
+  --},
+  --after = 'compiler',
+
+}
 use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 use 'romgrk/barbar.nvim'
 -- compiler and debugging
 use 'mfussenegger/nvim-dap'
 use 'nvim-neotest/nvim-nio'
 use({'jay-babu/mason-nvim-dap.nvim',
-  dependencies = {
+  requires = {
       "williamboman/mason.nvim",
       "mfussenegger/nvim-dap",
   },
